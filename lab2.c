@@ -1,24 +1,34 @@
 #include <stdio.h>
 #include <math.h>
+#define M_E 2.71
 
+long double factorial (long double l)
+{
+    int i;
+    i = 1;
+    if (l == 0 || l == 1)
+        return 1;
+    else
+        for(; l>1; l--)
+            i *= l;
+            return i;
+}
 int main(void)
 {
-    int n=1,y=1;                                    //Ініціалізуємо зміну для числа з якого починаємо і для факторіалу
-    double a=0,sum=0;                               //Ініціалізуємо зміну для значення виразу і суми
-
-    do{                                             //Починаємо цикл
-        for(int i = 0;n>i;n--)                      //Цикл для факторіалу
-            y=y*n;
-
-        double b = sqrt(n);                         //Підносимо до корення квадратного
-        int z = -1*n*b;                             //Степінь e
-        a=log10(y)*exp (z);                         //Розвязок для приклада
-        sum=sum+a;                                  //Добавляємо до суми зміну а
-        if(a<=0.0001)                               //Перевіряємо чи зміна  не є більша від 0.0001
-        printf("%lf\n",sum);                        //Якщо число менше то виводимо суму всіх попередніх чисел
-        n++;                                        //якщо умова не справдилась , добавляємо до числа n 1 і починаємо спочатку
-     }while(a>=0.0001);                             //Умова при якій виконується цикл
-
-
-
+    long double y, b, z;
+    long double a,sum = 0;
+    int n;
+    n = 1;
+    do
+    {
+        b = sqrt(n);
+        z = -1.0*b;
+        y = factorial(n);
+        a=log10(y)*pow(M_E, z);
+        sum += a;
+        printf("%Le %Lf %Lf %Lf %Lf\n", a, b, y, z, sum);
+        n++;
+     }
+     while(a>=0.0001);
+     printf("%Lf\n", sum);
 }
