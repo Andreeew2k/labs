@@ -5,10 +5,10 @@
 
 int main(void)
 {
-double sum=0.0, y=0, s=0, u=0;
 for (double x=pi/5 ; x <= pi; x+=(pi-(pi/5))/10)
 {
-    s = 0;
+    double sum=0.0, y=0, s=0, u=0;
+
     y=pow(pi,2)/8-(pi/4)*fabs(x);
     for (int n = 1; n<41; n++)
     {
